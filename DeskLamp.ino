@@ -44,14 +44,15 @@ void loop()
 
 void bellChime()
 {
-digitalWrite(relayBell, LOW);
-    delay(250);
-    digitalWrite(relayBell, HIGH);
-    delay(250);
     digitalWrite(relayBell, LOW);
     delay(250);
     digitalWrite(relayBell, HIGH);
     delay(250);
     digitalWrite(relayBell, LOW);
+    delay(250);
+    digitalWrite(relayBell, HIGH);
+    delay(250);
+    digitalWrite(relayBell, LOW);
+    delay(250);
 }
     
