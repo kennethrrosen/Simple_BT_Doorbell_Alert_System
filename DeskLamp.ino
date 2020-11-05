@@ -19,12 +19,12 @@ const int relayBell = 3;  //A3
 
 void setup()
 {
+    pinMode(relayBell, OUTPUT);
+    digitalWrite(relayBell, HIGH);
     Serial.begin(9600);
     BTSerial.begin(38400);
     Serial.println("BT Serial Ready");
     Serial.println("Ready for bell ring...");
-    pinMode(relayBell, OUTPUT);
-    digitalWrite(relayBell, HIGH);
 }
 
 void loop()
@@ -35,14 +35,14 @@ void loop()
     
   }
   if (BTSerial.read() == '1') {
-    bellChime();
+    bellFlicker();
   }
   else if (BTSerial.read() == '0') {
     digitalWrite(relayBell, HIGH);
   }
 }
 
-void bellChime()
+void bellFlicker()
 {
     digitalWrite(relayBell, LOW);
     delay(250);
