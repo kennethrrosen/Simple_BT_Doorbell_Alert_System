@@ -19,12 +19,12 @@ const int bellButton = 3;  //D3
 
 void setup()
 {
+    pinMode(bellButton, INPUT);
+    digitalWrite(bellButton, HIGH);
     Serial.begin(9600);
     BTSerial.begin(38400);
     Serial.println("BT Serial Ready");
     Serial.println("Ready for bell press...");
-    pinMode(bellButton, INPUT);
-    digitalWrite(bellButton, HIGH);
 }
 
 void loop()
