@@ -3,7 +3,7 @@
 DON'T SCARE ME (reciever)
 Doorbell modification and light alert system for workshed.
 
-by: Questionable Mechanics
+  by: Questionable Mechanics
   contact: questionable.mechanics@gmail.com
   last rev: 10/2020
   This sketch is in the public domain
@@ -13,32 +13,31 @@ by: Questionable Mechanics
 */
 
 #include <SoftwareSerial.h>
-SoftwareSerial BTSerial(0, 1); // RX | TX, ALT: SDA:A4 SCL:A5
+SoftwareSerial BTSerial(10, 11); // RX | TX
+const byte numChars = 1024;
+char receivedChars[numChars];   // an array to store the received data
 
-const int relayBell = 3;  //A3
+boolean newData = false;
 
-void setup()
-{
-    pinMode(relayBell, OUTPUT);
-    digitalWrite(relayBell, HIGH);
-    Serial.begin(9600);
-    BTSerial.begin(38400);
-    Serial.println("BT Serial Ready");
-    Serial.println("Ready for bell ring...");
+const int relayBell = 3;
+
+void setup() {
+ pinMode(relayBell, OUTPUT);
+ digitalWrite(relayBell, LOW);
+ BTSerial.begin(38400);
+ Serial.begin(9600);
+ Serial.println("<Arduino is ready>");
 }
 
-void loop()
-{
- while (BTSerial.available()) {
-    Serial.write(BTSerial.read());
-    Serial.read();
-    
-  }
+void loop() {
+ if (BTSerial.available()) {
+   Serial.write(BTSerial.read());
+   }
   if (BTSerial.read() == '1') {
     bellFlicker();
   }
   else if (BTSerial.read() == '0') {
-    digitalWrite(relayBell, HIGH);
+    digitalWrite(relayBell, LOW);
   }
 }
 
@@ -54,5 +53,8 @@ void bellFlicker()
     delay(250);
     digitalWrite(relayBell, LOW);
     delay(250);
+    digitalWrite(relayBell, HIGH);
+    delay(250);
+    digitalWrite(relayBell, LOW);
+    delay(250);
 }
-    
