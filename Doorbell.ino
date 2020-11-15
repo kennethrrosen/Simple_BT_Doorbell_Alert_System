@@ -18,7 +18,7 @@ SoftwareSerial BTSerial(10, 11); // RX | TX
 const int bellButton = 3;  //D3
 
 void setup() {
-  pinMode(bellButton, INPUT);
+  pinMode(bellButton, INPUT_PULLUP);
   BTSerial.begin(38400);
   Serial.begin(9600);
 }
