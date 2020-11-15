@@ -27,4 +27,6 @@ TOTAL:   | | £51.59
 
 *3D-print your case to fit your needs/space
 
-#### Fritzing TK
+#### Schematic
+
+<img src="https://i.ibb.co/WcZRXSm/doorbellschem.png"  ALIGN="right"/>
