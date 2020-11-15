@@ -1,15 +1,12 @@
 /*
-
 DON'T SCARE ME (reciever)
 Doorbell modification and light alert system for workshed.
-
   by: Questionable Mechanics
   contact: questionable.mechanics@gmail.com
   last rev: 10/2020
   This sketch is in the public domain
   Note: Developed and tested using VSCODE with Arduino plugin:
   https://github.com/microsoft/vscode-arduino
-
 */
 
 #include <SoftwareSerial.h>
@@ -30,13 +27,13 @@ void setup() {
 }
 
 void loop() {
- if (BTSerial.available()) {
-   Serial.write(BTSerial.read());
+ while (BTSerial.available()) {
+    Serial.write(BTSerial.read());
    }
   if (BTSerial.read() == '1') {
     bellFlicker();
   }
-  else if (BTSerial.read() == '0') {
+  if (BTSerial.read() == '0') {
     digitalWrite(relayBell, LOW);
   }
 }
